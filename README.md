@@ -30,7 +30,7 @@ git pull
 - [ ] CRUD 
 - [ ] user login and register `kamel`
 - [ ] Password hashing (with authentication in middleware) `kamel`
-- [ ] api documentation with sawgger
+- [ ] api documentation with sawgger `everone do his own documentation`
 - [ ] deployment
 ### FUNCTION:
 - [ ] user login , register `kamel`
