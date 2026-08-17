@@ -13,6 +13,10 @@ download the package
 ```bash
 npm install
 ```
+run server:
+```bash
+nodemon --exec tsx src/server.ts
+```
 when you done:
 ```bash
 git add .
@@ -35,7 +39,7 @@ git pull
 - [ ] api documentation with sawgger `everone do his own documentation`
 - [ ] deployment
 ### FUNCTION:
-- [ ] user login , register `kamel`
+- [ ] user login , register `kamel` (almost done, login need somefixes)
 - [ ] trainer :
 	- [ ] create own session `farah`
 	- [ ] delete own session `farah`
