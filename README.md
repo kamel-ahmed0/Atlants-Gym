@@ -2,7 +2,7 @@
 OSC Backend Training [Evaluation Project]
 
 ---
-for the team:
+# For the team:
 first clone the repo:
 ```bash
 git clone <the repo link>
