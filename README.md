@@ -7,6 +7,8 @@ first clone the repo:
 ```bash
 git clone <the repo link>
 ```
+create `.env` and use the `.env.example` as template
+
 download the package
 ```bash
 npm install
