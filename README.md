@@ -24,26 +24,26 @@ git pull
 
 ---
 # TO DO:
-- [ ] make booking model.
-- [ ] make user model.
-- [ ] make class session model.
-- [ ] CRUD ==look at it later==
-- [ ] user login and register
-- [ ] Password hashing (with authentication in middleware)
+- [ ] make booking model. `kareem`
+- [ ] make user model. `kamel`
+- [ ] make class session model `farah`
+- [ ] CRUD 
+- [ ] user login and register `kamel`
+- [ ] Password hashing (with authentication in middleware) `kamel`
 - [ ] api documentation with sawgger
 - [ ] deployment
 ### FUNCTION:
-- [ ] user login , register
+- [ ] user login , register `kamel`
 - [ ] trainer :
-	- [ ] create own session
-	- [ ] delete own session
-	- [ ] edit (update) own session
-	- [ ] view booking for their session
+	- [ ] create own session `farah`
+	- [ ] delete own session `farah`
+	- [ ] edit (update) own session `farah`
+	- [ ] view booking for their session `kareem`
 - [ ] member:
-	- [ ] read class session
-	- [ ] book available class session
-	- [ ] cancel(delete) own booking
-	- [ ] when the class session is full add him to the waitlist (what the waitlist do)
+	- [ ] read class session `farah`
+	- [ ] book available class session `kareem`
+	- [ ] cancel(delete) own booking `kareem`
+	- [ ] when the class session is full add him to the waitlist  (what the waitlist do) `kareem`
 ---
 # The Task:
 
