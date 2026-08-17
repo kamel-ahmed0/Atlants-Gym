@@ -27,7 +27,7 @@ git pull
 ---
 # TO DO:
 - [ ] make booking model. `kareem`
-- [ ] make user model. `kamel`
+- [x] make user model. `kamel`
 - [ ] make class session model `farah`
 - [ ] CRUD 
 - [ ] user login and register `kamel`
