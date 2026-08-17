@@ -7,7 +7,7 @@ first clone the repo:
 ```bash
 git clone <the repo link>
 ```
-download the package:
+download the package
 ```bash
 npm install
 ```
