@@ -23,11 +23,35 @@ git pull
 ```
 
 ---
+# TO DO:
+- [ ] make booking model.
+- [ ] make user model.
+- [ ] make class session model.
+- [ ] CRUD ==look at it later==
+- [ ] user login and register
+- [ ] Password hashing (with authentication in middleware)
+- [ ] api documentation with sawgger
+- [ ] deployment
+### FUNCTION:
+- [ ] user login , register
+- [ ] trainer :
+	- [ ] create own session
+	- [ ] delete own session
+	- [ ] edit (update) own session
+	- [ ] view booking for their session
+- [ ] member:
+	- [ ] read class session
+	- [ ] book available class session
+	- [ ] cancel(delete) own booking
+	- [ ] when the class session is full add him to the waitlist (what the waitlist do)
+---
+# The Task:
+
 ## Minimum Requirements (Applies to Every Idea)
 
 Whichever idea is picked, the final project must include all of the following:
 
-- Built with **Node.js**, **TypeScript**, and **Express.js** ==Done==
+- Built with **Node.js**, **TypeScript**, and **Express.js** 
 - Connected to **MongoDB** using **Mongoose**, with at least **2 schemas/models**
 - Full **CRUD** operations on at least one resource
 - **User authentication** — register and login endpoints
@@ -37,7 +61,7 @@ Whichever idea is picked, the final project must include all of the following:
 - Environment variables managed with **dotenv** 
 - API documented with **Swagger** 
 - Deployed to a live cloud URL (**Render** / **Railway**)
-- Source code pushed to a **public GitHub repository** ==Done==
+- Source code pushed to a **public GitHub repository** 
 
 ---
 ## User Types
@@ -120,7 +144,7 @@ Support searching and filtering by:
 - Waitlist when a session is full
 - Pagination
 - Dashboard statistics (busiest classes, attendance rate)
-- Logging middleware ==TO DO==
+- Logging middleware 
 - Soft delete for class sessions
 
 ---
