@@ -7,17 +7,17 @@ first clone the repo:
 ```bash
 git clone <the repo link>
 ```
-download the package
+download the package:
 ```bash
 npm install
 ```
-when you done 
+when you done:
 ```bash
 git add .
 git commit -m "your commit message"
 git push
 ```
-to get the new code
+before evertime you start:
 ```bash
 git pull
 ```
