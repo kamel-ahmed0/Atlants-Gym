@@ -35,7 +35,7 @@ git pull
 - [ ] make class session model `farah`
 - [ ] CRUD 
 - [x] user login and register `kamel`
-- [ ] Password hashing (with authentication in middleware) `kamel` 
+- [x] Password hashing (with authentication in middleware) `kamel` 
 - [ ] api documentation with sawgger `everone do his own documentation`
 - [ ] deployment
 ### FUNCTION:
