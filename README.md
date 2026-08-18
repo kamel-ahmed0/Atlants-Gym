@@ -39,7 +39,7 @@ git pull
 - [ ] api documentation with sawgger `everone do his own documentation`
 - [ ] deployment
 ### FUNCTION:
-- [ ] user login , register `kamel` (almost done, login need somefixes)
+- [x] user login , register `kamel` 
 - [ ] trainer :
 	- [ ] create own session `farah`
 	- [ ] delete own session `farah`
