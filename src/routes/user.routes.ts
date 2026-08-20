@@ -1,5 +1,5 @@
-import {Router} from "express"
-import{registerUser, loginUser} from "../controllers/user.controller"
+import { Router } from "express"
+import { registerUser, loginUser } from "../controllers/user.controller"
 const router = Router();
 
 /**
@@ -47,7 +47,7 @@ const router = Router();
  *       500:
  *         description: Failed to create User
  */
-router.post("/register",registerUser);
+router.post("/register", registerUser);
 
 /**
  * @swagger
@@ -80,6 +80,6 @@ router.post("/register",registerUser);
  *       500:
  *         description: Server error
  */
-router.post("/login",loginUser);
+router.post("/login", loginUser);
 
 export default router;

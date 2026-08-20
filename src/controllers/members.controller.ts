@@ -87,3 +87,49 @@ export const cancelBooking = async (req: Request, res: Response) => {
     return res.status(500).json({ message: 'Server error' });
   }
 };
+
+
+export const getAllSessions = async (req: Request, res: Response) => {
+  try {
+    const request = req as any;
+
+    if (request.user.role !== 'Member') {
+      return res.status(403).json({ message: 'Only members can view sessions' });
+    }
+
+    const sessions = await ClassSession.find().populate('trainer', 'fullname email');
+
+    return res.status(200).json({
+      message: 'Available sessions',
+      sessions: sessions
+    });
+
+  } catch (error) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
+
+export const getSessionById = async (req: Request, res: Response) => {
+  try {
+    const request = req as any;
+
+    if (request.user.role !== 'Member') {
+      return res.status(403).json({ message: 'Only members can view sessions' });
+    }
+
+    const sessionId = request.params.sessionId;
+    const session = await ClassSession.findById(sessionId).populate('trainer', 'fullname email');
+
+    if (!session) {
+      return res.status(404).json({ message: 'Session not found' });
+    }
+
+    return res.status(200).json({
+      message: 'Session details',
+      session: session
+    });
+
+  } catch (error) {
+    return res.status(500).json({ message: 'Server error' });
+  }
+};
