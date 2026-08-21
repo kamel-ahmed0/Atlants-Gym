@@ -31,13 +31,13 @@ export const bookSession = async (req: Request, res: Response) => {
     if (bookedCount >= session.capacity) {
       status = 'waitlisted';
     }
-
+ 
     const newBooking = new Booking({
       session: sessionId,
       member: user._id,
       status: status
     });
-
+    
     await newBooking.save();
     return res.status(201).json({ message: 'Booking successful', booking: newBooking });
 
