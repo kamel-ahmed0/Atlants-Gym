@@ -12,7 +12,7 @@ const options = {
            url: "http://localhost:3000"} 
         ]
     },
-    apis: ["./routes/**/*.ts"]
+    apis: ["./src/routes/*.ts"]
 }
 
 export const specs = swaggerJSDoc(options);

@@ -39,6 +39,11 @@ export const bookSession = async (req: Request, res: Response) => {
     });
     
     await newBooking.save();
+
+    if(status === 'waitlisted') {
+      return res.status(200).json({ message: 'You are waitlisted for this session', booking: newBooking });
+    }
+    
     return res.status(201).json({ message: 'Booking successful', booking: newBooking });
 
   } catch (error) {
