@@ -9,7 +9,7 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
 
     const trainerEmail = request.user.email;
 
-    const trainer = await User.findOne({ email: trainerEmail });
+    const trainer = await User.findOne({ email: trainerEmail }).lean();
     if (!trainer) {
       return res.status(404).json({ message: 'Trainer not found' });
     }
@@ -17,7 +17,7 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
     const trainerSessions = await ClassSession.find({ trainer: trainer._id });
     const sessionIds = trainerSessions.map(session => session._id);
 
-    const bookings = await Booking.find({ session: { $in: sessionIds } });
+    const bookings = await Booking.find({ session: { $in: sessionIds } }).lean();
 
     return res.status(200).json({
       message: 'Here are the bookings for your sessions',

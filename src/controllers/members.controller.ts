@@ -84,7 +84,7 @@ export const cancelBooking = async (req: Request, res: Response) => {
 export const getAllSessions = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-    const sessions = await ClassSession.find().populate('trainer', 'fullname email');
+    const sessions = await ClassSession.find().populate('trainer', 'fullname email').lean();
 
     return res.status(200).json({
       message: 'Available sessions',
