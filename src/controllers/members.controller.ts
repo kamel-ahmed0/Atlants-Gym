@@ -7,10 +7,6 @@ export const bookSession = async (req: Request, res: Response) => {
   try {
     const request = req as any; 
 
-    if (request.user.role !== 'Member') {
-      return res.status(403).json({ message: 'Only members can book' });
-    }
-
     const sessionId = request.params.sessionId;
     const userEmail = request.user.email; 
 
@@ -54,10 +50,6 @@ export const cancelBooking = async (req: Request, res: Response) => {
   try {
     const request = req as any;
 
-    if (request.user.role !== 'Member') {
-      return res.status(403).json({ message: 'Only members can cancel' });
-    }
-
     const bookingId = request.params.bookingId;
     const userEmail = request.user.email;
 
@@ -92,11 +84,6 @@ export const cancelBooking = async (req: Request, res: Response) => {
 export const getAllSessions = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
-    if (request.user.role !== 'Member') {
-      return res.status(403).json({ message: 'Only members can view sessions' });
-    }
-
     const sessions = await ClassSession.find().populate('trainer', 'fullname email');
 
     return res.status(200).json({
@@ -112,11 +99,6 @@ export const getAllSessions = async (req: Request, res: Response) => {
 export const getSessionById = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
-    if (request.user.role !== 'Member') {
-      return res.status(403).json({ message: 'Only members can view sessions' });
-    }
-
     const sessionId = request.params.sessionId;
     const session = await ClassSession.findById(sessionId).populate('trainer', 'fullname email');
 

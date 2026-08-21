@@ -1,9 +1,12 @@
 import express from 'express';
-import { getTrainerBookings } from '../controllers/trainer.controller';
-import { authenticate } from '../middleware/auth.middleware';
+import { getTrainerBookings, updateSession, deleteSession, createSession } from '../controllers/trainer.controller';
+import { auth , requireRole } from '../middleware/auth.middleware';
 
 const router = express.Router();
+router.post('/sessions', auth,requireRole('Trainer'), createSession);
+router.put('/sessions/:sessionId', auth,requireRole('Trainer'), updateSession);
+router.delete('/sessions/:sessionId', auth,requireRole('Trainer'), deleteSession);
+router.get('/bookings', auth,requireRole('Trainer'), getTrainerBookings);
 
-router.get('/my-bookings', authenticate, getTrainerBookings);
 
 export default router;

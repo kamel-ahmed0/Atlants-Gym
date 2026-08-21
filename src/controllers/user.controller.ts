@@ -7,6 +7,10 @@ import { User } from "../models/user.model"
 export const registerUser = async (req:Request, res:Response)=>{
     try{
         const { firstname ,password , repeatedPassword, lastname , email , role } = req.body;
+
+        if (!firstname || !lastname || !email || !password || !repeatedPassword || !role) {
+            return res.status(400).json({ message: "All fields are required!" });
+        }
         const emailChecker = await User.findOne({email});
         if(emailChecker){
             return res.status(400).json({message: "User already exists with this email address!"});
@@ -27,9 +31,9 @@ export const registerUser = async (req:Request, res:Response)=>{
             password:hashedPassword,
             role
         });
-        res.status(201).json({message : "User created successfully!!"});
+        return res.status(201).json({message : "User created successfully!!"});
     }catch(err){
-        res.status(500).json({message : "Failed to create User!"});
+        return res.status(500).json({message : "Failed to create User!"});
     }
     
 }
@@ -48,7 +52,7 @@ export const loginUser = async (req:Request, res:Response)=>{
         if(!isPasswordValid){
             return res.status(401).json({message : "Invalid email or password!"});
         }
-        const secert = process.env.JWT_SECRET as string;
+        const secert = process.env.JWT_SECRET as string || "fallback_secret_key";
         const expires = 60*60*24; // 1 Day
         const token = jwt.sign(
             {
@@ -62,7 +66,7 @@ export const loginUser = async (req:Request, res:Response)=>{
             httpOnly:true,
             maxAge: expires *1000
         })
-        res.status(200).json({message : "Login successfully!!"});
+        res.status(200).json({message : "Login successfully!!",token});
     }catch(err){
         res.status(500).json({message : "Server Error!"});
     }

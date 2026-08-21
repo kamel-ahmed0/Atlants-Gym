@@ -20,7 +20,7 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
     }
 }
 //role checker
-function requireRole(role: String) {
+export function requireRole(role: string) {
     return (req: Request, res: Response, next: NextFunction) => {
         if(!req.user){
             return res.status(401).json({ message: "Unauthorized!!" });

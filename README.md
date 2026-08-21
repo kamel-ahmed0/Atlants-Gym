@@ -30,26 +30,26 @@ git pull
 
 ---
 # TO DO:
-- [ ] make booking model. `kareem`
+- [x] make booking model. `kareem`
 - [x] make user model. `kamel`
-- [ ] make class session model `farah`
-- [ ] CRUD 
+- [x] make class session model `farah`
+- [x] CRUD 
 - [x] user login and register `kamel`
 - [x] Password hashing (with authentication in middleware) `kamel` 
 - [ ] api documentation with sawgger `everone do his own documentation`
 - [ ] deployment
 ### FUNCTION:
 - [x] user login , register `kamel` 
-- [ ] trainer :
-	- [ ] create own session `farah`
-	- [ ] delete own session `farah`
-	- [ ] edit (update) own session `farah`
-	- [ ] view booking for their session `kareem`
+- [x] trainer :
+	- [x] create own session `farah`
+	- [x] delete own session `farah`
+	- [x] edit (update) own session `farah`
+	- [x] view booking for their session `kareem`
 - [ ] member:
-	- [ ] read class session `farah`
-	- [ ] book available class session `kareem`
-	- [ ] cancel(delete) own booking `kareem`
-	- [ ] when the class session is full add him to the waitlist  (what the waitlist do) `kareem`
+	- [x] read class session `farah`
+	- [x] book available class session `kareem`
+	- [x] cancel own booking `kareem` [why i need to get the booking id not the sesstion id ??]
+	- [ ] when the class session is full add him to the waitlist  (what the waitlist do) `kareem` [need to fix i can book a full session you should say you in wait listed no just you booked it]
 ---
 # The Task:
 

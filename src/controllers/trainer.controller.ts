@@ -1,15 +1,11 @@
 import { Request, Response } from 'express';
-import Booking from '../models/booking'; 
+import Booking from '../models/booking';
 import { ClassSession } from '../models/class.session.model';
 import { User } from '../models/user.model';
 
 export const getTrainerBookings = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
-    if (request.user.role !== 'Trainer') {
-      return res.status(403).json({ message: 'Only trainers can view this' });
-    }
 
     const trainerEmail = request.user.email;
 
@@ -19,17 +15,13 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
     }
 
     const trainerSessions = await ClassSession.find({ trainer: trainer._id });
-    
-    const sessionIds = [];
-    for (let i = 0; i < trainerSessions.length; i++) {
-      sessionIds.push(trainerSessions[i]._id);
-    }
+    const sessionIds = trainerSessions.map(session => session._id);
 
     const bookings = await Booking.find({ session: { $in: sessionIds } });
 
-    return res.status(200).json({ 
+    return res.status(200).json({
       message: 'Here are the bookings for your sessions',
-      bookings: bookings 
+      bookings: bookings
     });
 
   } catch (error) {
@@ -40,10 +32,6 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
 export const createSession = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
-    if (request.user.role !== 'Trainer') {
-      return res.status(403).json({ message: 'Only trainers can create sessions' });
-    }
 
     const trainerEmail = request.user.email;
     const trainer = await User.findOne({ email: trainerEmail });
@@ -77,10 +65,6 @@ export const updateSession = async (req: Request, res: Response) => {
   try {
     const request = req as any;
 
-    if (request.user.role !== 'Trainer') {
-      return res.status(403).json({ message: 'Only trainers can edit sessions' });
-    }
-
     const sessionId = request.params.sessionId;
     const trainer = await User.findOne({ email: request.user.email });
     if (!trainer) {
@@ -113,10 +97,6 @@ export const updateSession = async (req: Request, res: Response) => {
 export const deleteSession = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
-    if (request.user.role !== 'Trainer') {
-      return res.status(403).json({ message: 'Only trainers can delete sessions' });
-    }
 
     const sessionId = request.params.sessionId;
     const trainer = await User.findOne({ email: request.user.email });
