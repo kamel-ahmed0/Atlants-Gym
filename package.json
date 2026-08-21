@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/kamel-ahmed0/Atlants-Gym#readme",
   "dependencies": {
+    "typescript": "^5.0.0",
     "bcryptjs": "^3.0.3",
     "cookie-parser": "^1.4.7",
     "dotenv": "^17.4.2",
