@@ -84,11 +84,27 @@ export const cancelBooking = async (req: Request, res: Response) => {
 export const getAllSessions = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-    const sessions = await ClassSession.find().populate('trainer', 'fullname email');
+    const page = Math.max(1, parseInt(req.query.page as string) || 1);
+    const limit = Math.min(100, parseInt(req.query.limit as string) || 10);
+    const skip = (page - 1) * limit;
+
+    const sessions = await ClassSession.find()
+      .populate('trainer', 'fullname email')
+      .lean()
+      .skip(skip)
+      .limit(limit);
+
+    const total = await ClassSession.countDocuments();
 
     return res.status(200).json({
       message: 'Available sessions',
-      sessions: sessions
+      sessions: sessions,
+      pagination: {
+        total,
+        page,
+        limit,
+        pages: Math.ceil(total / limit)
+      }
     });
 
   } catch (error) {
