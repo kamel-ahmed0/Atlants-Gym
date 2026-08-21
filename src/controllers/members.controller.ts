@@ -84,11 +84,30 @@ export const cancelBooking = async (req: Request, res: Response) => {
 export const getAllSessions = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-    const sessions = await ClassSession.find().populate('trainer', 'fullname email');
+
+    const page = Math.max(parseInt(request.query.page, 10) || 1, 1);
+    const limit = Math.max(parseInt(request.query.limit, 10) || 10, 1);
+    const skip = (page - 1) * limit;
+
+    const [sessions, totalCount] = await Promise.all([
+      ClassSession.find()
+        .select('title description trainer date capacity')
+        .populate('trainer', 'fullname email')
+        .sort({ date: 1 })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      ClassSession.countDocuments()
+    ]);
 
     return res.status(200).json({
       message: 'Available sessions',
-      sessions: sessions
+      sessions: sessions,
+      pagination: {
+        totalCount,
+        page,
+        totalPages: Math.ceil(totalCount / limit)
+      }
     });
 
   } catch (error) {
@@ -100,7 +119,10 @@ export const getSessionById = async (req: Request, res: Response) => {
   try {
     const request = req as any;
     const sessionId = request.params.sessionId;
-    const session = await ClassSession.findById(sessionId).populate('trainer', 'fullname email');
+    const session = await ClassSession.findById(sessionId)
+      .select('title description trainer date capacity')
+      .populate('trainer', 'fullname email')
+      .lean();
 
     if (!session) {
       return res.status(404).json({ message: 'Session not found' });

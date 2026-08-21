@@ -9,19 +9,36 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
 
     const trainerEmail = request.user.email;
 
-    const trainer = await User.findOne({ email: trainerEmail });
+    const page = Math.max(parseInt(request.query.page, 10) || 1, 1);
+    const limit = Math.max(parseInt(request.query.limit, 10) || 10, 1);
+    const skip = (page - 1) * limit;
+
+    const trainer = await User.findOne({ email: trainerEmail }).select('_id').lean();
     if (!trainer) {
       return res.status(404).json({ message: 'Trainer not found' });
     }
 
-    const trainerSessions = await ClassSession.find({ trainer: trainer._id });
+    const trainerSessions = await ClassSession.find({ trainer: trainer._id })
+      .select('_id')
+      .lean();
     const sessionIds = trainerSessions.map(session => session._id);
 
-    const bookings = await Booking.find({ session: { $in: sessionIds } });
+    const [bookings, totalCount] = await Promise.all([
+      Booking.find({ session: { $in: sessionIds } })
+        .skip(skip)
+        .limit(limit)
+        .lean(),
+      Booking.countDocuments({ session: { $in: sessionIds } })
+    ]);
 
     return res.status(200).json({
       message: 'Here are the bookings for your sessions',
-      bookings: bookings
+      bookings: bookings,
+      pagination: {
+        totalCount,
+        page,
+        totalPages: Math.ceil(totalCount / limit)
+      }
     });
 
   } catch (error) {
