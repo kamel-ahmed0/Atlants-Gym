@@ -17,11 +17,26 @@ export const getTrainerBookings = async (req: Request, res: Response) => {
     const trainerSessions = await ClassSession.find({ trainer: trainer._id });
     const sessionIds = trainerSessions.map(session => session._id);
 
-    const bookings = await Booking.find({ session: { $in: sessionIds } }).lean();
+    const page = Math.max(1, parseInt(req.query.page as string) || 1);
+    const limit = Math.min(100, parseInt(req.query.limit as string) || 20);
+    const skip = (page - 1) * limit;
+
+    const bookings = await Booking.find({ session: { $in: sessionIds } })
+      .lean()
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Booking.countDocuments({ session: { $in: sessionIds } });
 
     return res.status(200).json({
       message: 'Here are the bookings for your sessions',
-      bookings: bookings
+      bookings: bookings,
+      pagination: {
+        total,
+        page,
+        limit,
+        pages: Math.ceil(total / limit)
+      }
     });
 
   } catch (error) {
