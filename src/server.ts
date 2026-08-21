@@ -15,6 +15,10 @@ dotenv.config();
 app.use(express.json());
 app.use(cookieParser());
 
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));  
 app.use("/user", userRouters);
 app.use("/member", memberRouters);
