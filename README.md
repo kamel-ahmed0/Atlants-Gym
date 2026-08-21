@@ -1,6 +1,9 @@
 # Atlants-Gym
+<center> 
 OSC Backend Training [Evaluation Project]
 
+[Deployment Link](https://atlants-gym-production.up.railway.app/api-docs/#/)
+</center>
 ---
 # For the team:
 first clone the repo:
@@ -36,8 +39,8 @@ git pull
 - [x] CRUD 
 - [x] user login and register `kamel`
 - [x] Password hashing (with authentication in middleware) `kamel` 
-- [ ] api documentation with sawgger `everone do his own documentation`
-- [ ] deployment
+- [x] api documentation with sawgger `everone do his own documentation`
+- [x] deployment
 ### FUNCTION:
 - [x] user login , register `kamel` 
 - [x] trainer :
@@ -45,11 +48,11 @@ git pull
 	- [x] delete own session `farah`
 	- [x] edit (update) own session `farah`
 	- [x] view booking for their session `kareem`
-- [ ] member:
+- [x] member:
 	- [x] read class session `farah`
 	- [x] book available class session `kareem`
-	- [x] cancel own booking `kareem` [why i need to get the booking id not the sesstion id ??]
-	- [ ] when the class session is full add him to the waitlist  (what the waitlist do) `kareem` [need to fix i can book a full session you should say you in wait listed no just you booked it]
+	- [x] cancel own booking `kareem`
+	- [x] when the class session is full add him to the waitlist  (what the waitlist do) `kareem` 
 ---
 # The Task:
 
@@ -163,3 +166,4 @@ Support searching and filtering by:
 - A cancelled booking automatically frees a spot in the session
 - A trainer cannot delete a session if it has confirmed bookings
 - Sessions can only be booked for future time slots
+

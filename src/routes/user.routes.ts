@@ -4,9 +4,10 @@ const router = Router();
 
 /**
  * @swagger
- * /users/register:
+ * /user/register:
  *   post:
  *     summary: Register a new user
+ *     tags: [User]
  *     requestBody:
  *       required: true
  *       content:
@@ -51,9 +52,10 @@ router.post("/register", registerUser);
 
 /**
  * @swagger
- * /users/login:
+ * /user/login:
  *   post:
  *     summary: Login user and set token cookie
+ *     tags: [User]
  *     requestBody:
  *       required: true
  *       content:
