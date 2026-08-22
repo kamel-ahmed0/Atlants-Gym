@@ -80,6 +80,7 @@ export const logoutUser = (req:Request, res:Response)=>{
         res.clearCookie('token',{
             httpOnly: true,
             sameSite: 'lax',
+            path: '/'
         });
         res.status(200).json({message : "Logout successfully!!"});
     }catch(err){
