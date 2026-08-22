@@ -9,7 +9,7 @@ const options = {
             description: "API Documentation for Atlants Gym"
         },
         servers : [{
-           url: "http://localhost:3000/"} 
+           url: "https://atlants-gym-production.up.railway.app/"} 
         ]
     },
     apis: ["./src/routes/*.ts"]
