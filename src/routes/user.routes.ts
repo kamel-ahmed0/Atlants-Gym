@@ -90,6 +90,7 @@ router.post("/login", loginUser);
  *   post:
  *     summary: Logout user and clear authentication cookie
  *     tags: [User]
+ *     security: []
  *     responses:
  *       200:
  *         description: Logout successfully
