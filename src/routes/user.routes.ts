@@ -86,7 +86,7 @@ router.post("/login", loginUser);
 
 /**
  * @swagger
- * user/logout:
+ * /user/logout:
  *   post:
  *     summary: Logout user and clear authentication cookie
  *     tags: [User]
