@@ -6,7 +6,7 @@ import { User } from '../models/user.model';
 export const getTrainerBookings = async (req: Request, res: Response) => {
   try {
     const request = req as any;
-
+    
     const trainerEmail = request.user.email;
 
     const trainer = await User.findOne({ email: trainerEmail }).lean();
