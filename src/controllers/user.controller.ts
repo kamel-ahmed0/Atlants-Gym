@@ -78,8 +78,6 @@ export const loginUser = async (req:Request, res:Response)=>{
 export const logoutUser = (req:Request, res:Response)=>{
     try{
         res.clearCookie('token');
-        res.setHeader('Clear-Site-Data', '"cookies", "storage"');
-
         res.status(200).json({message : "Logout successfully!!"});
     }catch(err){
         res.status(500).json({message : "Server Error!"});

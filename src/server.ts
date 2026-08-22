@@ -19,7 +19,7 @@ app.get('/', (req, res) => {
   res.status(200).send('OK');
 });
 
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));  
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs,{swaggerOptions: {withCredentials: true,}}));  
 app.use("/user", userRouters);
 app.use("/member", memberRouters);
 app.use("/trainer", TrainerRouters);    
