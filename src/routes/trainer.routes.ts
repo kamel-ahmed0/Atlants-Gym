@@ -147,9 +147,6 @@ router.delete('/sessions/:sessionId', auth, requireRole('Trainer'), deleteSessio
  *                 message:
  *                   type: string
  *                   example: Here are the bookings for your sessions
- *                 count:
- *                   type: integer
- *                   example: 5
  *                 bookings:
  *                   type: array
  *                   items:
