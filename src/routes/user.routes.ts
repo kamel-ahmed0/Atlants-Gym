@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { registerUser, loginUser } from "../controllers/user.controller"
+import { registerUser, loginUser, logoutUser} from "../controllers/user.controller"
 const router = Router();
 
 /**
@@ -83,5 +83,27 @@ router.post("/register", registerUser);
  *         description: Server error
  */
 router.post("/login", loginUser);
+
+/**
+ * @swagger
+ * user/logout:
+ *   post:
+ *     summary: Logout user and clear authentication cookie
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: Logout successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Logout successfully!!
+ *       500:
+ *         description: Server Error!
+ */
+router.post("/logout", logoutUser);
 
 export default router;
