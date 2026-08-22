@@ -4,6 +4,7 @@ OSC Backend Training [Evaluation Project]
 
 [Deployment Link](https://atlants-gym-production.up.railway.app/api-docs/#/)
 </center>
+
 ---
 # For the team:
 first clone the repo:
